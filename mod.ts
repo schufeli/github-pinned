@@ -1,5 +1,6 @@
 import axiod from 'https://deno.land/x/axiod/mod.ts';
-import { Config, loadConfig } from './lib/config.ts';
+import { loadConfig } from './lib/config.ts';
+import { Response } from './lib/response.ts';
 
 const url = 'https://api.github.com/graphql';
 const config = await loadConfig('./config.yml');
@@ -19,11 +20,13 @@ const query = `{user(login: "${config.username}") {
                     }
                 }}}}`
 
-
-
 axiod.post(url, { query: query }, { headers: auth })
     .then(response => {
-        console.log(response.data);
+        let respositories = (response.data as Response).data.user.pinnedItems.nodes;
+
+        respositories.forEach(element => {
+            console.log(element);
+        });
     })
     .catch(error => {
         console.error(error);
