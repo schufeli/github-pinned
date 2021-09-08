@@ -1,5 +1,5 @@
 import axiod from 'https://deno.land/x/axiod/mod.ts';
-import { loadConfig } from './lib/config/config_loader.ts';
+import { Config, loadConfig } from './lib/config.ts';
 
 const url = 'https://api.github.com/graphql';
 const config = await loadConfig('./config.yml');
