@@ -1,9 +1,9 @@
-export type Repository = {
+export interface Repository {
     name: string;
     description: string;
     url: string;
     forkCount: number;
-    stargazerCount: number;
+    stargazeCount: number;
     primaryLanguage: {
         name: string;
         color: string;
