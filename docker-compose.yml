@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+  github-pinned:
+    image: schufeli/github-pinned
+    container_name: github-pinned
+    ports: 
+      - "9999:8080"
+    volumes: 
+      - ./config.yml:/app/config.yml
