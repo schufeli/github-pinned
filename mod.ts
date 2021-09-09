@@ -1,9 +1,9 @@
-import { Application } from 'https://deno.land/x/oak/mod.ts';
+import { Application as _application } from 'https://deno.land/x/oak/mod.ts';
 import { loadConfig } from './lib/config.ts';
 import { fetch } from './lib/fetch.ts';
 
 const config = await loadConfig('./config.yml');
-const app = new Application();
+const app = new _application();
 const port = 8080
 
 app.use(async (res) => {
