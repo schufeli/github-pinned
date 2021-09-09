@@ -1,13 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This workflow will install Deno then run Deno lint and test.
-# For more information see: https://github.com/denoland/setup-deno
-
-name: Deno
-
 on:
   push:
     branches: [main]
@@ -18,22 +8,23 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        deno-version: [1.2.2, 1.3.0, 1.13.2]
+
     steps:
-      - name: Setup repo
+      - name: Git Checkout Deno Module
         uses: actions/checkout@v2
-
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1.13.2
-        # uses: denoland/setup-deno@004814556e37c54a2f6e31384c9e18e9833173669
+      - name: Use Deno Version ${{ matrix.deno-version }}
+        uses: denolib/setup-deno@v2
         with:
-          deno-version: v1.x
+          deno-version: ${{ matrix.deno-version }}
 
-      # Uncomment this step to verify the use of 'deno fmt' on each commit.
-      # - name: Verify formatting
-      #   run: deno fmt --check
+      - name: Lint Deno Module
+        run: deno fmt --check
 
-      - name: Run linter
-        run: deno lint
+      - name: Build Deno Module
+        run: deno run --reload mod.ts
 
-      - name: Run tests
-        run: deno test -A --unstable
+      - name: Test Deno Module
+        run: deno test --allow-none
