@@ -1,6 +1,6 @@
 # Github Pinned
 ![License](https://img.shields.io/github/license/schufeli/github-pinned?label=License)
-![Docker workflow](https://github.com/schufeli/github-pinned/actions/workflows/docker.yml/badge.svg)
+[![Docker Build](https://github.com/Schufeli/github-pinned/actions/workflows/docker.yml/badge.svg)](https://github.com/Schufeli/github-pinned/actions/workflows/docker.yml)
 
 github-pinned is a small microservice with which you can fetch the six repositories pinned to your repositories. It is written in Typescript with the Deno framework and dockerized for easier usage.
 
@@ -25,6 +25,13 @@ docker run -p "<Port>:8080" --name github-pinned -v ./config.yml:/app/config.yml
 Please have a look at the provided [docker-compose.yml](https://github.com/Schufeli/github-pinned/blob/main/docker-compose.yml) file.
 
 ## 🚀 How to use
+
+### Request a Post
+To fetch a Post from the Service you will need to send an HTTP GET Request to your hosted Github-pinned instance (I will use localhost in the following examples!).
+
+``` 
+https://localhost<:Port>/ 
+```
 
 ### Response
 If your request was successful you will get a JSON object which is similar to the following example with the description of each element.
