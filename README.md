@@ -1,5 +1,6 @@
 # Github Pinned
-![License](https://img.shields.io/github/license/schufeli/reddit-random?label=License)
+![License](https://img.shields.io/github/license/schufeli/github-pinned?label=License)
+![Docker workflow](https://github.com/schufeli/github-pinned/actions/workflows/docker.yml/badge.svg)
 
 github-pinned is a small microservice with which you can fetch the six repositories pinned to your repositories. It is written in Typescript with the Deno framework and dockerized for easier usage.
 
